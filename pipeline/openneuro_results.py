@@ -319,10 +319,10 @@ def compare_with_archive(frame: pd.DataFrame, out_dir: Path) -> dict | None:
         f"{int((agree['unique_winner'] == agree['unique_winner_paper']).sum())}/{len(agree)}")
     report["interpretation"] = (
         "Real-EEG metrics and NMM-only outputs are deterministic and should agree with the paper to "
-        "numerical precision (differences around 1e-6 or smaller). Diffusion-only, Add and WGAN-GP are "
-        "trained neural networks whose outputs depend on hardware (CPU/CUDA/MPS) and library versions, "
-        "so seed-level values are not expected to be identical; compare their participant-level errors "
-        "and winners instead.")
+        "numerical precision on any machine. Diffusion-only, Add and WGAN-GP are trained neural networks: "
+        "on the authors' Mac Studio (Apple silicon, MPS) with the pinned packages they reproduced the "
+        "archived values exactly, but on other hardware or library versions their seed-level values can "
+        "differ; then compare participant-level errors and winners instead.")
     (out_dir / "comparison_with_paper.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     return report
 

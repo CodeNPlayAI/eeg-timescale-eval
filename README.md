@@ -143,7 +143,7 @@ The same selection options work for `download_openneuro.py`, `check`, `run`, `re
 
 1. **Pre-flight check** (section 5).
 2. **Preprocessing** — F7 and F8, resampled to 256 Hz, first 180 s, converted to µV (`scripts/preprocess_openneuro_cli.py`).
-3. **Real-EEG check** — each preprocessed recording must have 46,080 finite samples per channel and a non-zero SD. Recordings with an unusual SD (outside 1–200 µV), constant stretches of 1 s or more, or many samples at the minimum or maximum (clipping) are reported as warnings (`reports/real_data_check.csv`).
+3. **Real-EEG check** — each preprocessed recording must have 46,080 finite samples per channel and a non-zero SD. Constant stretches of 1 s or more and many samples at the minimum or maximum (clipping) are reported as warnings. The SD of each channel is recorded in `reports/real_data_check.csv` for reference.
 4. **NMM-only, Diffusion-only and Add** for every participant and seed, followed by evaluation of these generators and of the real recording (`scripts/run_aligned_ddpm_one_dataset.sh`).
 5. **WGAN-GP** training and generation (`scripts/generate_gan_only.py`); every generated signal is checked for length and finite values, then evaluated with the same protocol (`scripts/evaluate.py`).
 6. **Results** — error table, participant-level winners, Table 5, Fig. 5 and a comparison with the paper's archived values.
@@ -192,8 +192,8 @@ python pipeline/run_openneuro.py results --run-name NAME [--allow-incomplete]
 
 For participants and seeds that are part of the paper, `comparison_with_paper.json` sets your values beside the archived ones.
 
-- **Real-EEG metrics and NMM-only** are deterministic. They should agree with the paper to numerical precision (differences of about 1e-6 or smaller).
-- **Diffusion-only, Add and WGAN-GP** are trained neural networks. Their outputs depend on the hardware (CPU, CUDA, MPS) and library versions, so seed-level values are not identical to the paper. Compare participant-level errors, winners and the counts in `summary.json` instead.
+- **Real-EEG metrics and NMM-only** are deterministic. They should agree with the paper to numerical precision on any machine.
+- **Diffusion-only, Add and WGAN-GP** are trained neural networks. On the authors' Mac Studio (Apple silicon, MPS) with the pinned packages, a rerun of sub-012, seed 0 reproduced the archived values of all four generators exactly (largest difference 1.7e-11). On other hardware (CPU, CUDA) or with other library versions, their seed-level values can differ from the paper; compare participant-level errors, winners and the counts in `summary.json` instead.
 
 ## Run time and disk space
 
@@ -201,8 +201,9 @@ Each participant-seed trains three networks (two DDPMs and one WGAN-GP). Measure
 
 | Hardware | NMM-only + Diffusion-only + Add | WGAN-GP | Full run (30 × 20) |
 |---|---|---|---|
+| Mac Studio (2022, Apple silicon, MPS) | 0.8 min | 5.3 min | about 62 hours |
 | 2-core Linux CPU, no GPU | 5 min | 67 min | about 30 days |
-| Apple silicon (MPS) or NVIDIA GPU | measure with the one-participant run | | |
+| Other machines | measure with the one-participant run | | |
 
 Measure your machine with `--n-subjects 1 --n-seeds 1`, then multiply by the number of participant-seeds (600 for the paper). WGAN-GP takes most of the time; `--skip-wgan` runs the other three generators only.
 

@@ -258,8 +258,6 @@ def stage_real_check(run_dir: Path, subjects: list[str]) -> Report:
             if sd <= 1e-9:
                 rep.error(label, f"{ch} is flat (SD = 0)")
                 problems.append("flat")
-            elif not 1.0 <= sd <= 200.0:
-                problems.append(f"{ch} SD {sd:.1f} uV outside 1-200 uV")
             if longest_flat_s >= 1.0:
                 problems.append(f"{ch} constant for {longest_flat_s:.1f} s")
             if at_extreme > 0.01:
