@@ -1,0 +1,6 @@
+# Direct pins observed in the user-provided Mac Studio pip freeze (2026-10-31).
+# Not yet clean-install-tested on macOS.
+numpy==2.4.4
+scipy==1.17.1
+pandas==3.0.2
+matplotlib==3.10.8

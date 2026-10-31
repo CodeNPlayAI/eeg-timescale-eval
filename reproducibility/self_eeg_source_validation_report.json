@@ -1,0 +1,25 @@
+{
+  "created_at": "2026-08-11T20:23:12",
+  "root": "author-project/runs/self_eeg_aligned_ddpm_T1000_E800_B8_20seeds_20260811_200259",
+  "configuration": {
+    "diffusion_only": {
+      "T": 1000,
+      "optimization_updates": 800,
+      "batch_size": 8
+    },
+    "add_residual_diffusion": {
+      "T": 1000,
+      "optimization_updates": 800,
+      "batch_size": 8
+    }
+  },
+  "expected_subjects": 1,
+  "expected_seeds_per_subject": 20,
+  "found_subjects": 1,
+  "found_subject_seed_pairs": 20,
+  "model_metric_rows": 400,
+  "e1_rows": 180,
+  "e2_rows": 20,
+  "problems": [],
+  "status": "complete"
+}

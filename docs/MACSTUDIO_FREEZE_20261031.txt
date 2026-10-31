@@ -1,0 +1,42 @@
+# Observed pip freeze inventory, excluding editable Git-SSH dependency.
+# Original editable project: dynamics-eval-poc / mrd_srd; commit: 6e57bb8f552bc91239d5e5a10b8322ec8eba7c80
+# Run `python -m pip install -e .` from this repository if editable installation is needed.
+# This record is an environment inventory, NOT a cross-platform lock file.
+certifi==2026.6.17
+charset-normalizer==3.4.9
+contourpy==1.3.3
+cycler==0.12.1
+decorator==5.3.1
+filelock==3.25.2
+fonttools==4.62.1
+fsspec==2026.3.0
+idna==3.18
+Jinja2==3.1.6
+kiwisolver==1.5.0
+lazy-loader==0.5
+MarkupSafe==3.0.3
+matplotlib==3.10.8
+mne==1.12.1
+mpmath==1.3.0
+networkx==3.6.1
+numpy==2.4.4
+packaging==26.0
+pandas==3.0.2
+patsy==1.0.2
+pillow==12.2.0
+platformdirs==4.10.0
+pooch==1.9.0
+pyparsing==3.3.2
+python-dateutil==2.9.0.post0
+PyYAML==6.0.3
+requests==2.34.2
+scipy==1.17.1
+setuptools==81.0.0
+six==1.17.0
+statsmodels==0.14.6
+sympy==1.14.0
+torch==2.11.0
+tqdm==4.67.3
+typing_extensions==4.15.0
+urllib3==2.7.0
+wheel==0.46.3

@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eeg-timescale-eval"
+version = "0.1.0"
+description = "Multi-timescale EEG generation evaluation and IEEE Access figure reproduction"
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "numpy==2.4.4",
+    "scipy==1.17.1",
+    "pandas==3.0.2",
+    "matplotlib==3.10.8",
+]
+
+[project.optional-dependencies]
+experiment = [
+    "torch==2.11.0",
+    "mne==1.12.1",
+    "tqdm==4.67.3",
+    "pyyaml==6.0.3",
+    "statsmodels==0.14.6",
+    "openneuro-py==2026.9.1",
+]
+dev = ["pytest>=8", "ruff>=0.4"]
+viz = ["seaborn>=0.13"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-ra"

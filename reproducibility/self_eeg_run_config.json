@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "real_csv": "author-project/data/eeg_record_20251226_173831.csv",
+  "dataset_label": "self_eeg",
+  "subject_id": "self_eeg",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "run_e1_e2": true,
+  "make_figures": true,
+  "channels": [
+    "F7",
+    "F8"
+  ],
+  "fs": 256,
+  "evaluation": {
+    "start_sec": 20.0,
+    "duration_sec": 139.99609375,
+    "window_sec": 10.0,
+    "hop_sec": 5.0,
+    "bandpass_hz": [
+      1.0,
+      45.0
+    ],
+    "zscore": "global",
+    "dfa_scale_sec": [
+      0.2,
+      1.25
+    ]
+  },
+  "nmm": {
+    "coupling": 0.02,
+    "duration_sec": 180.0
+  },
+  "diffusion_only": {
+    "T": 1000,
+    "optimization_updates": 800,
+    "batch_size": 8,
+    "learning_rate": 0.001,
+    "train_window_sec": 10.0,
+    "train_hop_sec": 5.0,
+    "generated_duration_sec": 180.0
+  },
+  "add_residual_diffusion": {
+    "T": 1000,
+    "optimization_updates": 800,
+    "batch_size": 8,
+    "learning_rate": 0.001,
+    "train_window_sec": 10.0,
+    "train_hop_sec": 5.0,
+    "generated_duration_sec": 140.0,
+    "std_match": true,
+    "mixing_coefficient_b": 1.0
+  },
+  "created_at": "2026-08-11T20:03:00"
+}

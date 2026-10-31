@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this research code or derived figures, please cite the associated manuscript."
+title: "A Multi-Timescale Evaluation Framework for EEG Generation Reveals Metric-Dependent Trade-offs Across Temporal Scales"
+type: software
+authors:
+  - family-names: Murai
+    given-names: Hiroshi
+  - family-names: Ishihara
+    given-names: Yuta
+  - family-names: Hosokawa
+    given-names: Yasuteru
+  - family-names: Fujimoto
+    given-names: Ken'ichi
+repository-code: "https://github.com/CodeNPlayAI/eeg-timescale-eval"
+license: MIT

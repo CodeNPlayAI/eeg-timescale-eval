@@ -1,0 +1,8 @@
+# Direct pins observed in Mac Studio environment; transitive dependencies are not locked here.
+-r requirements-figures.txt
+torch==2.11.0
+mne==1.12.1
+tqdm==4.67.3
+pyyaml==6.0.3
+statsmodels==0.14.6
+openneuro-py==2026.9.1
