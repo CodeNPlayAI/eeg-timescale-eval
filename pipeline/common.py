@@ -95,8 +95,8 @@ METRICS = [
     "acf_x_abs_1_0s",
 ]
 METRIC_DISPLAY = {
-    "psd_loglog_slope_all_2_40hz": "PSD slope (2-40 Hz)",
-    "dfa_x_alpha": "DFA alpha",
+    "psd_loglog_slope_all_2_40hz": "PSD slope (2–40 Hz)",
+    "dfa_x_alpha": "DFA α",
     "acf_x_abs_0_1s": "ACF ≤ 0.1 s",
     "acf_x_abs_0_5s": "ACF ≤ 0.5 s",
     "acf_x_abs_1_0s": "ACF ≤ 1.0 s",

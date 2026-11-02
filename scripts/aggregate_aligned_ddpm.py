@@ -15,7 +15,7 @@ import pandas as pd
 
 METRICS = [
     ("psd_loglog_slope_all_2_40hz", "PSD slope (2–40 Hz)"),
-    ("dfa_x_alpha", "DFA alpha"),
+    ("dfa_x_alpha", "DFA α"),
     ("acf_x_abs_0_1s", "ACF@0.1s"),
     ("acf_x_abs_0_5s", "ACF@0.5s"),
     ("acf_x_abs_1_0s", "ACF@1.0s"),

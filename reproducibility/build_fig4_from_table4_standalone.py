@@ -44,7 +44,7 @@ METRICS = [
     "ACF 1.0 s",
 ]
 METRIC_LABEL = {
-    "PSD slope (2-40 Hz)": "PSD slope (2-40 Hz)",
+    "PSD slope (2-40 Hz)": "PSD slope\n(2–40 Hz)",
     "DFA alpha": r"DFA $\alpha$",
     "ACF 0.1 s": "ACF ≤ 0.1 s",
     "ACF 0.5 s": "ACF ≤ 0.5 s",

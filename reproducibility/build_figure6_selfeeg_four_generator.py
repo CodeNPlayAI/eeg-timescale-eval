@@ -23,7 +23,7 @@ METRICS = [
 ]
 METRIC_LABELS = {
     "psd_loglog_slope_all_2_40hz": "PSD slope\n(2–40 Hz)",
-    "dfa_x_alpha": "DFA alpha",
+    "dfa_x_alpha": r"DFA $\alpha$",
     "acf_x_abs_0_1s": "ACF ≤ 0.1 s",
     "acf_x_abs_0_5s": "ACF ≤ 0.5 s",
     "acf_x_abs_1_0s": "ACF ≤ 1.0 s",
@@ -119,7 +119,7 @@ def build_mean_matrices(df: pd.DataFrame) -> tuple[np.ndarray, np.ndarray, pd.Da
 
         source_rows.append({
             "metric": metric,
-            "metric_label": METRIC_LABELS[metric].replace("\n", " "),
+            "metric_label": METRIC_LABELS[metric].replace("\n", " ").replace(r"$\alpha$", "α"),
             **{f"{col}_mean_value": float(raw[i, j]) for j, col in enumerate(COLUMNS)},
             **{
                 f"{model}_mean_relative_error": float(relative[i, j])

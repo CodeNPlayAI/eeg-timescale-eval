@@ -45,14 +45,14 @@ METRICS = [
     "acf_x_abs_1_0s",
 ]
 METRIC_LABEL = {
-    "psd_loglog_slope_all_2_40hz": "PSD slope (2-40 Hz)",
-    "dfa_x_alpha": "DFA alpha",
+    "psd_loglog_slope_all_2_40hz": "PSD slope (2–40 Hz)",
+    "dfa_x_alpha": "DFA α",
     "acf_x_abs_0_1s": "ACF ≤ 0.1 s",
     "acf_x_abs_0_5s": "ACF ≤ 0.5 s",
     "acf_x_abs_1_0s": "ACF ≤ 1.0 s",
 }
 METRIC_FIG_LABEL = {
-    "psd_loglog_slope_all_2_40hz": "PSD slope\n(2-40 Hz)",
+    "psd_loglog_slope_all_2_40hz": "PSD slope\n(2–40 Hz)",
     "dfa_x_alpha": r"DFA $\alpha$",
     "acf_x_abs_0_1s": "ACF ≤ 0.1 s",
     "acf_x_abs_0_5s": "ACF ≤ 0.5 s",
@@ -141,7 +141,7 @@ def build_table1(tables_dir: Path) -> None:
         "Evaluation metrics",
         "Purpose",
     ]
-    metrics = "PSD slope (2-40 Hz); DFA alpha; ACF ≤ 0.1 s; ACF ≤ 0.5 s; ACF ≤ 1.0 s"
+    metrics = "PSD slope (2–40 Hz); DFA α; ACF ≤ 0.1 s; ACF ≤ 0.5 s; ACF ≤ 1.0 s"
     core_settings = (
         "NMM coupling 0.02; Diffusion-only and Add residual DDPM: T=1000; "
         "Add b=1.0 with channel-wise residual SD matching"
@@ -158,19 +158,19 @@ def build_table1(tables_dir: Path) -> None:
         ],
         [
             "2 - External validation",
-            "OpenNeuro ds005385; 30 subjects; F7/F8",
+            "OpenNeuro ds005385; 30 participants; F7/F8",
             "NMM-only; Diffusion-only; Add",
             core_settings,
-            "20 runs per subject; subject is the inferential unit",
+            "20 runs per participant; participant is the inferential unit",
             metrics,
-            "Test cross-subject reproducibility of the core comparison",
+            "Test cross-participant reproducibility of the core comparison",
         ],
         [
             "3 - Model-family extension",
-            "Same OpenNeuro cohort; 30 subjects",
+            "Same OpenNeuro cohort; 30 participants",
             "NMM-only; Diffusion-only; Add; WGAN-GP",
             core_settings + "; WGAN-GP model-family extension",
-            "20 runs per subject; subject is the inferential unit",
+            "20 runs per participant; participant is the inferential unit",
             metrics,
             "Test whether the trade-off persists after adding an adversarial model",
         ],
@@ -316,7 +316,7 @@ def validate_openneuro(
         calculated_winners, on=["subject", "metric"], how="outer", validate="one_to_one"
     )
     if not winner_check["unique_winner"].eq(winner_check["calculated_winner"]).all():
-        raise ValueError("OpenNeuro subject-level winner table is inconsistent with 20-seed means")
+        raise ValueError("OpenNeuro participant-level winner table is inconsistent with 20-seed means")
 
     extended_rows = phase.loc[phase["phase"] == "Phase 3: extended 4"]
     if len(extended_rows) != 1:
@@ -858,7 +858,7 @@ def write_table_notes(out_dir: Path, self_complete: bool) -> None:
     lines.extend(
         [
             "## Table 5",
-            "OpenNeuro subject-level absolute error. Values are the mean (95% percentile bootstrap CI) across 30 subject-level errors after first averaging 20 run-level absolute errors within each subject. Bootstrap B=100,000; RNG seed=20260810. The smallest mean within each metric is highlighted in the formatted workbook.",
+            "OpenNeuro participant-level absolute error. Values are the mean (95% percentile bootstrap CI) across 30 participant-level errors after first averaging 20 run-level absolute errors within each participant. Bootstrap B=100,000; RNG seed=20260810. The smallest mean within each metric is highlighted in the formatted workbook.",
             "",
         ]
     )
@@ -878,8 +878,8 @@ def write_validation_report(
         f"- Protocol ID: `{PROTOCOL_ID}`",
         "- Reporting policy: `REPORTING_POLICY_20260814_REVISED.md`",
         "- OpenNeuro source: aligned V2 core-three results plus unchanged WGAN-GP outputs",
-        "- OpenNeuro completeness: 30 subjects x 20 seeds x 5 metrics x 4 generators",
-        "- OpenNeuro subject bootstrap: B=100,000; RNG seed=20260810",
+        "- OpenNeuro completeness: 30 participants x 20 seeds x 5 metrics x 4 generators",
+        "- OpenNeuro participant bootstrap: B=100,000; RNG seed=20260810",
         "- Extended subject trade-offs: 28/30",
         "- Extended descriptive run-level trade-offs: 526/600",
         "- Extended unique winner cells: NMM-only 11; Diffusion-only 31; Add 18; WGAN-GP 90",

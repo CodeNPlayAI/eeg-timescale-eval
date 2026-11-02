@@ -232,7 +232,7 @@ bash reproducibility/run_figure5_openneuro_winners.sh   # Fig. 5      (OpenNeuro
 bash reproducibility/run_figure6_selfeeg_four_generator.sh   # Fig. 6 (self-recorded EEG, 20 seeds)
 ```
 
-These scripts overwrite the files in `figures/`; the redrawn images are identical to the published ones. Figure 1 (`figures/Figure1.pdf`) is a schematic. `docs/PUBLIC_DATA_SCOPE.md` describes each archived file.
+These scripts overwrite the files in `figures/`; the redrawn images preserve the archived numerical results. Publication-label corrections are documented in [the label audit](docs/PUBLICATION_LABEL_AUDIT_20261102.md). After rebuilding, run `python reproducibility/check_publication_labels.py` to check the visible labels. Figure 1 (`figures/Figure1.pdf`) is a schematic. `docs/PUBLIC_DATA_SCOPE.md` describes each archived file.
 
 ## Author-only scripts
 

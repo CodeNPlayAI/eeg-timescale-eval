@@ -14,7 +14,7 @@ from matplotlib.patches import Patch, Rectangle
 CORE_MODELS = ["NMM-only", "Diffusion-only", "Add"]
 MODELS = [*CORE_MODELS, "WGAN-GP"]
 METRICS = ["psd_loglog_slope_all_2_40hz", "dfa_x_alpha", "acf_x_abs_0_1s", "acf_x_abs_0_5s", "acf_x_abs_1_0s"]
-METRIC_LABEL = {"psd_loglog_slope_all_2_40hz": "PSD slope (2-40 Hz)", "dfa_x_alpha": r"DFA $\alpha$", "acf_x_abs_0_1s": "ACF ≤ 0.1 s", "acf_x_abs_0_5s": "ACF ≤ 0.5 s", "acf_x_abs_1_0s": "ACF ≤ 1.0 s"}
+METRIC_LABEL = {"psd_loglog_slope_all_2_40hz": "PSD slope\n(2–40 Hz)", "dfa_x_alpha": r"DFA $\alpha$", "acf_x_abs_0_1s": "ACF ≤ 0.1 s", "acf_x_abs_0_5s": "ACF ≤ 0.5 s", "acf_x_abs_1_0s": "ACF ≤ 1.0 s"}
 SUBJECTS = ["sub-012", "sub-050", "sub-062", "sub-122", "sub-140", "sub-144", "sub-152", "sub-157", "sub-180", "sub-305", "sub-308", "sub-320", "sub-323", "sub-331", "sub-349", "sub-402", "sub-407", "sub-412", "sub-425", "sub-449", "sub-470", "sub-518", "sub-529", "sub-542", "sub-566", "sub-573", "sub-574", "sub-575", "sub-597", "sub-603"]
 MODEL_COLORS = {"NMM-only": "#0072B2", "Diffusion-only": "#E69F00", "Add": "#009E73", "WGAN-GP": "#CC79A7"}
 
@@ -140,7 +140,7 @@ def plot_fig5(winners: pd.DataFrame, out_dir: Path) -> pd.DataFrame:
     ax.imshow(matrix, cmap=cmap, vmin=-0.5, vmax=3.5, aspect="auto")
     ax.set_xticks(range(len(SUBJECTS)), SUBJECTS, rotation=90)
     ax.set_yticks(range(len(METRICS)), [METRIC_LABEL[m] for m in METRICS])
-    ax.set_xlabel("OpenNeuro subject", labelpad=8)
+    ax.set_xlabel("OpenNeuro participant", labelpad=8)
     ax.set_xticks(np.arange(-0.5, len(SUBJECTS), 1), minor=True)
     ax.set_yticks(np.arange(-0.5, len(METRICS), 1), minor=True)
     ax.grid(which="minor", color="white", linewidth=0.55)
@@ -174,7 +174,7 @@ def plot_fig5(winners: pd.DataFrame, out_dir: Path) -> pd.DataFrame:
     ax.invert_yaxis()
     ax.set_xlim(0, 30)
     ax.set_xticks(np.arange(0, 31, 5))
-    ax.set_xlabel("Number of subjects (N = 30)")
+    ax.set_xlabel("Number of participants (N = 30)")
     ax.grid(axis="x", color="#D6DCE2", linewidth=0.75)
     ax.set_axisbelow(True)
     ax.legend(frameon=False, loc="lower center", bbox_to_anchor=(0.5, 1.02), ncol=4)
